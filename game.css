@@ -1,0 +1,20 @@
+@import url("style.css");
+body{
+    /* background-color: grey; */
+    /* color: white; */
+    /* font-family: 'Space-Grotesk'; */
+    /* font-weight: 300; */
+}
+#hero{
+    background-image: url("Illustrations2/Batgame_1.png");
+    
+
+}
+#hero .titre{
+
+    margin-left: 40px;
+    font-size: 50px;
+    margin-top: 300px;
+    
+
+}

@@ -1,0 +1,471 @@
+@import url(popupbox.css);
+
+@font-face {
+    font-family:'rajdhani' ;
+    src: url('../police/Rajdhani-Medium.ttf');   
+}
+@font-face {
+     font-family:'SpaceGrotesk' ;
+    src: url('../police/SpaceGrotesk-Regular.ttf');
+}
+@font-face {
+     font-family:'Space-Grotesk' ;
+    src: url('../police/SpaceGrotesk-Bold.ttf');
+}
+:root{
+    --white-color:#ffff;
+    --yellow-color: #ffff00;
+    --yellow-light: #f8f184;
+    --blue-color: #19587d;
+    --red-color:#890008;
+    --grey-light : #eddebffd;
+}
+*{
+margin: 0;
+padding: 0;
+box-sizing:border-box ;
+
+}
+h1{
+font-family: 'rajdhani';
+font-size: 36px;
+font-weight: 400;
+}
+.button{
+    font-family: 'rajdhani';
+    font-size: 20px;
+    font-weight: 400;
+}
+.container{
+    /* width: 80%; */
+    width: 80%;
+    margin:0 auto;
+    /* border: 1px solid #eddebf1f; */
+    padding:0 20px;
+}
+body{
+    background-color: black;
+    color: white;
+    /* font-family: 'Space-Grotesk'; */
+    font-weight: 300;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* padding: 30px 0px; */
+    /* margin: 0 100px; */
+    padding: 30px 20px;
+    margin: 0 82px;
+    border: 2px solid  rgba(255,255,255,0.1) ;
+       
+}
+nav  a img:hover,.reseaux .img:hover,.social-footer a img:hover{
+    /* filter:invert(89%) sepia(100%) saturate(7465%) hue-rotate(2deg)  brightness(104%) contrast(103%); */
+    filter:invert(18%) sepia(82%) saturate(4658%) hue-rotate(355deg)  brightness(109%) contrast(112%);
+    /* filter:brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(45deg)   contrast(1); */
+   
+}
+ul{
+    display: flex;
+    list-style: none;
+    gap: 20px;
+
+}
+nav ul a{
+    color: var(--white-color);
+    font-size: 30px;
+    font-family: 'rajdhani';
+    text-decoration: none;
+    
+    
+}
+nav ul a:hover{
+    color: var(--yellow-color);
+}
+
+nav ul li a.active{ 
+    text-decoration: underline;
+    color: var(--yellow-color);
+    /* color: var(--white-color); */
+    font-weight:700;  
+}
+#hero{
+    background-image: url("Illustrations/Bathome1.png");
+    height: 800px; 
+   background-repeat: no-repeat;
+   background-position: top center;
+   background-color:#19587d;
+   background-size: cover;
+
+}
+.trai-bordure{
+    border: 2px solid  rgba(255,255,255,0.1) ;
+    margin: 0 82px;
+    height: 800px; 
+    border-bottom: none;
+
+}
+.content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 60%;
+    margin:0  auto;
+    padding-top: 400px;
+}
+
+#hero .titre{
+    margin: 20px 0;
+}
+.cta{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    
+}
+ .btn{
+
+    padding: 10px 20px;
+    background:linear-gradient(to right,rgba(255,255,255,0.4) 40%, rgba(255,0,0,0.4) 60%) ; 
+    height: 44px;      
+}
+ .btn a{
+    text-decoration: none;
+    color: var(--white-color);
+    font-family: 'rajdhani';
+    font-size: 22px;
+    padding:auto ;    
+} 
+
+.fleche{
+    display: block;
+    margin: 100px auto;
+
+}
+.reseaux{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    right: 30px;
+    top:230px;
+}
+.reseaux .img{
+    margin-top: 15px;
+}
+
+
+.batman-personnage ,.batman-allies,.batman-nemesis {
+    display: flex;
+    justify-content: space-between;
+    /* border: solid red; */
+    /* margin: auto; */
+    gap: 30px;
+    
+   
+    
+
+   
+}
+
+
+#batman-cinema .titre , #batman-nemesis .titre, #batman-allies .titre, #batman-justice .titre {
+    /* text-transform: uppercase; */
+    font-weight: bold;
+    margin: 30px 0;
+    font-family: 'rajdhani';
+    font-size: 36px;
+    
+}
+#batman-cinema .description, #batman-nemesis .description, #batman-allies .description, #batman-justice .description{
+    margin-bottom: 40px;
+    text-align:justify ;
+    width: 80%;
+    font-size: 18px;
+    
+}
+#batman-cinema,#batman-nemesis,#batman-allies 
+{
+    border: 2px solid  rgba(255,255,255,0.1) ;
+    margin: 0 82px;
+    border-top: solid black;
+    border-bottom: solid black ;
+   
+}
+#batman-cinema .cine:hover, #batman-nemesis .cine:hover, #batman-allies .cine:hover{
+    transform: scale(1.1);
+    
+}
+.personne-info{
+    text-align:center ;
+}
+#batman-justice .container,#multimedia .container{
+    /* margin-top: 200px; */
+    border: 2px solid  rgba(255,255,255,0.1) ;
+    border-top: solid black;
+    border-bottom: solid black ;
+   width: 1185px;
+   padding-top: 150px;
+   justify-items: flex-end;
+    
+}
+/* #batman-justice .container{
+    margin-top: 200px;
+} */
+#batman-justice img{
+    width: 100%;
+}
+/* multimedia */
+
+#multimedia  button{
+    position: relative;
+    background: none;
+    border: none;
+    top: 155px;
+
+}
+.Bathome12{
+    display: flex;
+    margin-left: 650px;
+    /* border: 1px solid yellow; */
+    margin-top: -150px;
+}
+.Bathome13{
+    margin-top: 100px;
+    
+}
+#batman-nemesis .titre{
+   
+    margin-top: -60px;
+    /* border:3px solid #890008; */
+}
+/* .right,.left{
+    position: relative;
+    background: none;
+    border: none;
+    top: 155px;
+
+} */
+#multimedia  button.right{
+    margin-left: 90%;
+    
+}
+
+#multimedia .slider-multimedia{
+    display: flex;
+    width: 60%;
+    margin: 40px auto;
+    
+    
+
+}
+#multimedia .slider-image{
+    width: 100%;
+}
+#multimedia .slider-content{
+    padding: 15px;
+    background:linear-gradient(to right,#EDDEBF, #19587D 40%);
+    border-top-right-radius: 10px; 
+    border-bottom-right-radius: 10px; 
+    
+   
+}
+#multimedia span{
+    color: var(--yellow-color);  
+}
+#multimedia p{
+    font-size: 14px; 
+}
+.image-bande-annonce{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+#contact{
+    background:linear-gradient(to right,#EDDEBF, #19587D 40%);
+    padding: 70px 0;
+}
+#contact .form{
+    width: 50%;
+    margin: 0 auto;
+   
+}
+#contact h2{
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 32px;
+}
+#contact .titre{
+    display: block;
+    margin: 28px 0;
+}
+#contact .form input[type='email'],textarea{
+    display: block;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 100%;
+    /* 80%; */
+    border-bottom: 2px solid #c4c4c4;
+    background-color: transparent;
+    padding: 10px 0;
+    color: #ffffff;
+}
+.frequence select{
+    margin-top: 20px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #c4c4c4;
+    width: 100%;
+    /* margin-bottom: 40px; */
+    color: #ffffff;
+
+}
+.valeur{
+    
+    background-color:#19587D ;
+    border-bottom: 5px solid #c4c4c4;
+    color: #ffffff;  
+}
+
+.frequence select:focus, form .email:focus, form textarea:focus{
+    outline: none;
+    
+
+}
+#contact .news{
+    margin: 15px 0;
+    border-bottom: 2px solid #c4c4c4;
+
+    
+}
+/* #contact .icon img{
+    transform:rotate(90deg);
+    width: 20px; 
+} */
+::-webkit-input-placeholder{
+    color: var(--yellow-light);
+    font-size: 15px;
+}
+::-moz-placeholder{
+    color: var(--yellow-light);
+    font-size: 15px;
+}
+:-ms-input-placeholder{
+    color: var(--yellow-light);
+    font-size: 15px;
+}
+::-ms-input-placeholder{
+    color: var(--yellow-light);
+    font-size: 15px;
+}
+::placeholder{
+    color: var(--yellow-light);
+    font-size: 15px;
+
+}
+.btn-group{
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.form input[type='radio']{
+    opacity: 0;
+
+}
+.btn-group label{
+  cursor: pointer;
+  border: 2px solid;
+  padding: 10px;
+        -o-border-image: linear-gradient(
+            69deg,var(--yellow-light ),#b11313
+            
+        )1;
+           border-image: linear-gradient(
+            69deg,var( --yellow-light),#b11313
+        )1;
+font-size: 20px;
+
+}
+input[type='submit']{
+    display: block;
+    width: 230px;
+    /* margin: 25px; */
+    margin:25px auto;
+    padding: 15px 0;
+    cursor: pointer;
+    background:linear-gradient(to right,rgba(255,255,255,0.3) 40%, rgba(255,0,0,0.3) 60%);
+    border: none;
+    color: #ffff;
+    justify-content: center;
+    text-align: center;
+    
+}
+#citation{
+    margin: 90px;
+}
+#citation .citation-carte{
+   text-align: center;
+   /* width: 60%; */
+   line-height: 30px;
+   margin: 0 auto;
+}
+#citation .citation-auteur{
+   padding-top: 30px;
+   font-size: 14px;
+   font-family: 'radjhani';
+}
+#citation .guillemet-close{
+  float: right;
+}
+footer{
+    margin-top: 162px;
+
+}
+footer .text-footer{
+    text-align: center;
+    font-size: 14px;
+    
+
+}
+footer .social-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+    gap: 15px;
+
+}
+
+div{
+    -webkit-animation: fadeInRight 1500ms ease-in-out;
+            animation:  fadeInRight 1500ms ease-in-out;
+    
+
+} 
+@keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-100%) scale(0.1);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+/* nav:hover{
+   
+    border: 1px solid #eddebf1f;
+    
+}
+.container:hover{
+   
+    border-top: none;
+    border-bottom: none;
+    border-left: 1px solid #eddebf1f; ;
+    border-right: 1px solid #eddebf1f; 
+} */
+
+
+
