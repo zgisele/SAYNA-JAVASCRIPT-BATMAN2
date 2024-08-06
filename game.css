@@ -1,10 +1,5 @@
 @import url("style.css");
-body{
-    /* background-color: grey; */
-    /* color: white; */
-    /* font-family: 'Space-Grotesk'; */
-    /* font-weight: 300; */
-}
+
 #hero{
     background-image: url("Illustrations2/Batgame_1.png");
     
@@ -17,4 +12,109 @@ body{
     margin-top: 300px;
     
 
+}
+#batman-game{
+    border: 2px solid  rgba(255,255,255,0.1) ;
+    margin: 0 82px;
+    border-top: solid black;
+    border-bottom: solid black ;
+
+}
+
+.container-chavalier{
+    text-align: center;
+}
+#batman-game .titre{
+   
+    margin-bottom:50px;
+      
+}
+#batman-game .demarrer{
+    width: 230px;
+    margin-top:100px;
+    padding: 15px 0;
+    cursor: pointer;
+    background:linear-gradient(to right,rgba(255,255,255,0.3) 10%, rgba(238, 141, 61, 0.708) 90%);
+    border: none;
+    color: #ffff;
+      
+}
+/* premiere partie du jeu */
+.partie1{
+    margin-top: 100px;
+    padding: 100px;
+    /* border: 1px solid rgb(54, 30, 210); */
+}
+form{
+    /* border: 1px solid rgb(30, 210, 84); */
+    margin: 20px 0px;
+}
+.question{
+    display: flex;
+    /* border: 1px solid chocolate; */
+    justify-content: center;
+}
+.question img{
+    margin: auto;
+}
+
+.form-titre{
+    margin: 10px 0px;
+    text-align: left;
+}
+ .answer{
+    display: flex;
+    background-color: grey;
+    margin-bottom: 30px;
+    height: 50px;
+    gap: 20px; 
+    padding:10px 0px ;
+    padding-left: 10px;
+    font-size: 20px; 
+    width:500px;
+    border: 1px solid rgb(33, 210, 30);
+}
+.answer input[type='checkbox']{
+
+    height: 30px;
+    width: 30px;
+}
+/* slide 6 */
+.boule-grenane{
+   display: flex;
+   margin-left: 58em;
+   margin-top: 20px;
+   
+   /* border: 1px solid rgb(72, 30, 210); */
+}
+.boule-coeur{
+   display: flex;
+   margin-top: -8em;
+   margin-left: 100px;
+   /* border: 1px solid rgb(210, 30, 90); */
+}
+/* slide 9*/
+.inconnu{
+   display: flex;
+   margin-left: 40em;
+   margin-top: -20em; 
+   
+}
+.souri-malefique{
+   display: flex;
+   margin-top: -200px;
+   margin-left: 100px;
+   
+}
+#intro-quiz-9 .demarrer{
+    margin-top: 200px;
+}
+/* slide 10*/
+#intro-quiz-10 .homme-crenade{
+    display: flex;
+    margin-bottom:-40px ;
+    margin-left: 250px;
+}
+.bout-homme{
+    margin-bottom: -100px;
 }
