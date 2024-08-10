@@ -1,13 +1,64 @@
 
+$(document).ready(function () {
+   
+       console.log('jquery');
+    
+})
+
+
+
+// $(document).ready(function(){
+//     //Masquer les diapositives de questions au départ
+//     $('.question-slide').hide();
+
+//     // Récupère le nombre total de questions
+//     var totalQuestions = $('.question-slide').length;
+    
+//     // Ajoute les numéros de question à chaque diapositive
+//     $('.question-slide').each(function(index){
+//         var questionNumber = index + 1;
+//         $(this).find('.question-number').text(questionNumber + '/' + totalQuestions);
+//     });
+    
+//     // Clic sur le bouton "Démarrer"
+//     $('.start-button').click(function(){
+//         // Hide the chevalier section
+//         $('.intro-quiz').hide();
+        
+//         // Afficher la première diapositive de question
+//         $('.question-slide').first().show();
+//     });
+    
+//     // Clic sur le bouton "Suivant"
+//     $('.next-button').click(function(){
+//         // Récupérer la diapositive actuelle
+//         var currentSlide = $(this).closest('.question-slide');
+        
+//         // Masquer la diapositive actuelle
+//         currentSlide.hide();
+        
+//         //Afficher la diapositive suivante
+//         currentSlide.next('.question-slide').show();
+//     });
+// });
+
+
+
 // #################################################
 // cliquer sur le boutton demarrer le quize 
 $('#btn-start').click(function(){
     $('#quiz-box').slideDown(1000);
     $('#intro-quiz').slideUp(2000);  
 });
+// $(document).ready(function(){
+//     $('#btn-start').click(function(){
+//         $('#batman-game').addClass('hidden');
+//         $('#quiz-box').removeClass('hidden');
+//     });
+// });
 // fin bouton demarrarer
 
-//Effet scroll
+// Effet scroll
 $('#stop-arrow').click(function(){
     window.scrollTo({
         top: 0,
@@ -20,35 +71,42 @@ $('#down-arrow').click(function(){
         behavior: 'smooth'
     });
 });
-//fin effet scroll
+// fin effet scroll
 // ########################################################
 
 $.ajax({
-    url: 'https//octopus-app-2u6og.ondigitalocean.app/questions/all',
+    url: 'https://octopus-app-2u6og.ondigitalocean.app/questions/all',
+   
     datatype: 'json',
     success: function (questions) {
-
+        console.log('questions');
         // declaration des variables locale
         let totalPoint = 0;
          let currentQuiz = 0;   //index de la questions
         let totalQuiz = questions.length ;
         // fin variable locale
+       
+        // Affiche le nombre total de quiz
+        $('#total-quiz').text(totalQuiz);
 
-        $('total-quiz').text(totalQuiz);
-        setForm(questions[currentQuiz].question, questions[currentQuiz].question); // a completer
+        // Initialise le formulaire avec la première question
+        // setForm(questions[currentQuiz].question, questions[currentQuiz].question); // a completer
+        setForm(questions[currentQuiz].question, questions[currentQuiz].reponse, currentQuiz + 1);
 
         // soumission de la reponse de l'utilisateur
         $('#formulaire').submit(function (e) {
             e.preventDefault();
             
             let chooeResponse = isChooseResponse(questions, currentQuiz) // a completer
+            
+
             let isChoose = chooeResponse[0];
             let userResponse = chooeResponse[1];
             //si l'index de la question est inferieure au total
             if (currentQuiz < (totalQuiz - 1)) {
                 if (isChoose) {// Sinon valider le formulaire
                     // $('#quiz-box').slideUp(1000).slideDown(1000);
-                    currentQuiz++; //augmenter
+                    currentQuiz++; //augmenter l'index de la question
 
                     setTimeout(() => {
                         if (currentQuiz < totalQuiz) {
@@ -68,9 +126,10 @@ $.ajax({
                 else{
                     if (isChoose) {
                         
-                        console.log(userResponse);
+                        // console.log(userResponse);
                         totalPoint = userResponse === true ? (totalPoint + 1 ) :totalPoint;
-                        console.log(totalPoint);
+                        // console.log(totalPoint);
+                        // Affichage des résultats
                         if (totalPoint <= (totalQuiz / 3)) {
                             $('#titre').text("0" + totalPoint + "/" + totalQuiz + "c'est pas");// a completer
                             $('#msg-result').text("Oula! Heureusement que le riddler est soumise" );// a completer
@@ -90,7 +149,8 @@ $.ajax({
         
     },
     error: function (questions) {
-        console.log(questions)
+        // console.log(questions)
+        console.log('impossible de se connecter')
         
     },
     
@@ -123,8 +183,9 @@ function isChooseResponse ( questions,currentQuiz) {
 
     //####################################################################################"
     //##fonction de changement de quetion                                             ####
-    function  setForm(question, reponse, nbreQuiz) {
-        $('#img-illustrate').attr("src", "./resources/assets/game/Batgame_" + (2 + nbreQuiz) + ".png");//a completer
+    function  setForm (question, reponse, nbreQuiz) {
+        // ./resources/assets/game/Batgame_ 
+        $('#img-illustrate').attr("src", "Illustrations2/Batgame_" + (2 + nbreQuiz) + ".png");
         $('#number-quiz').text(nbreQuiz);
         $('#quiz-question').empty();
         $('#quiz-question').append("<p class ='question' id = 'question' ></p>");
@@ -142,5 +203,38 @@ function isChooseResponse ( questions,currentQuiz) {
 
     
 }
+
+
+
+// animation de la souri
+const bat = document.getElementById('bat');
+document.body.addEventListener('mousemove', function(event) {
+   
+    const mouseX = event.pageX;
+    const mouseY = event.pageY;
+    
+    bat.style.left = (mouseX - bat.clientWidth / 2) + 'px';
+    bat.style.top = (mouseY - bat.clientHeight / 2) + 'px';
+    bat.style.opacity = 1; // Rendre la chauve-souris visible en suivant la souris
+    
+    // Réduire progressivement l'opacité pour créer l'effet de fondu
+    setTimeout(() => {
+        bat.style.opacity = 0;
+    }, 500); // 500ms avant de commencer à fondre
+});
+
+// Apparition progressive des éléments au fur et à mesure du scrolling, avec un effet fade
+// in + slide de gauche à droite.
+$(window).on('scroll', function() {
+    $('.fade-slide').each(function() {
+
+        var elementTop = $(this).offset().top;
+        var viewportBottom = $(window).scrollTop() + $(window).height();
+        
+        if (elementTop < viewportBottom - 60) { // Ajustez la valeur pour déclencher l'effet plus tôt ou plus tard
+            $(this).addClass('visible');
+        }
+    });
+});
 
 
