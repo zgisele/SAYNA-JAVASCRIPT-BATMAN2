@@ -1,0 +1,32 @@
+@import url(style.css);
+@import url(popupbox.css);
+
+@media only screen and (max-width: 500px){
+    
+}
+
+@media only screen and (max-width: 500px) and (max-width: 900px){
+   
+    header{
+        background-size:100vw 100vh;
+       
+       
+    }
+    .image-sect2{
+       
+        
+    }
+    
+}
+
+@media only screen and (max-width: 901px) and (max-width: 1024px){
+    /* (max-width: 769px) */
+    header{
+        background-size:100vw 100vh;
+       /* height: 90vh; */
+       /* width: 90%; */
+       /* border: 6px solid blue; */
+       
+    }
+    
+}

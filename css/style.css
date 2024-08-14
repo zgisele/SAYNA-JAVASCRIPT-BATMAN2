@@ -47,19 +47,26 @@ font-weight: 400;
     font-size: 20px;
     font-weight: 400;
 }
+
 .container{
     /* width: 80%; */
     width: 80%;
     margin:0 auto;
-    /* border: 1px solid #eddebf1f; */
+
     padding:0 20px;
 }
 body{
     background-color: black;
     color: white;
-    /* font-family: 'Space-Grotesk'; */
     font-weight: 300;
+    overflow-x: hidden;
+    /* border: 5px solid  rgba(1, 9, 239, 0.931) ; */
+
 }
+.menu-button{
+    visibility: hidden;
+}
+
 nav{
     display: flex;
     align-items: center;
@@ -102,7 +109,7 @@ nav ul li a.active{
     font-weight:700;  
 }
 #hero{
-    background-image: url("Illustrations/Bathome1.png");
+    background-image: url("../Illustrations/Bathome1.png");
     height: 800px; 
    background-repeat: no-repeat;
    background-position: top center;
@@ -125,6 +132,7 @@ nav ul li a.active{
     width: 60%;
     margin:0  auto;
     padding-top: 400px;
+   
 }
 
 #hero .titre{
@@ -178,12 +186,7 @@ nav ul li a.active{
     justify-content: space-between;
     /* border: solid red; */
     /* margin: auto; */
-    gap: 30px;
-    
-   
-    
-
-   
+    gap: 30px;  
 }
 
 
@@ -222,7 +225,7 @@ nav ul li a.active{
     border: 2px solid  rgba(255,255,255,0.1) ;
     border-top: solid black;
     border-bottom: solid black ;
-   width: 1185px;
+   width: 1175px;
    padding-top: 150px;
    justify-items: flex-end;
     
@@ -230,7 +233,7 @@ nav ul li a.active{
 /* #batman-justice .container{
     margin-top: 200px;
 } */
-#batman-justice img{
+#batman-justice img,.cine img{
     width: 100%;
 }
 /* multimedia */
@@ -250,6 +253,7 @@ nav ul li a.active{
 }
 .Bathome13{
     margin-top: 100px;
+   
     
 }
 #batman-nemesis .titre{
@@ -273,9 +277,7 @@ nav ul li a.active{
     display: flex;
     width: 60%;
     margin: 40px auto;
-    
-    
-
+   
 }
 #multimedia .slider-image{
     width: 100%;
@@ -285,7 +287,6 @@ nav ul li a.active{
     background:linear-gradient(to right,#EDDEBF, #19587D 40%);
     border-top-right-radius: 10px; 
     border-bottom-right-radius: 10px; 
-    
    
 }
 #multimedia span{
@@ -297,6 +298,9 @@ nav ul li a.active{
 .image-bande-annonce{
     margin-top: 100px;
     margin-bottom: 100px;
+}
+.image-bande-annonce img{
+   width: 100%;
 }
 #contact{
     background:linear-gradient(to right,#EDDEBF, #19587D 40%);
@@ -484,4 +488,142 @@ footer .social-footer{
 } */
 
 
+/* partie responsive */
 
+
+@media only screen and (max-width: 500px){
+    nav{
+
+        /* border: 10px solid green; */
+        position: relative;
+        
+    }
+    .menu-button{
+        visibility: visible;
+        background-color: rgba(255,0,0,0.4);
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+
+    }
+    nav ul {
+       
+        display: none;
+        position: absolute;
+        top:50%;
+        left: 0;
+        /* z-index: 10; */
+        padding: 0;
+        margin: 0;
+        background-color: black;
+        box-shadow: 0 2px 10px rgba(221, 11, 11, 0.904);
+        border-radius: 5px;  
+        margin-top: 60px;
+        margin-left: 150px;
+        /* width: 200px; */
+
+       
+        /* visibility: hidden; */
+       
+        
+       
+    }
+    
+    nav ul a{
+        display: block;
+        padding: 10px;  
+    } 
+    .menu-button:focus + ul
+    /* .menu-button:active + ul */
+    {
+        display: block; 
+    }
+
+    #hero{
+        background-size:100vw 100vh;
+        border: 10px solid black;
+    }
+    .cta{
+        display: block;   
+    }
+    .cta .btn{
+       margin-top: 20px;   
+    }
+    .cta .btn a{
+     font-size: 10px;   
+    }
+    .content{
+       
+        width: 90%;
+        height: 200px;
+        /* border: 4px solid green; */
+       
+    }
+
+     .batman-personnage ,.batman-allies,.batman-nemesis {
+       display: block;
+      
+    }
+    .batman-personnage ,.batman-allies,.batman-nemesis {
+       display: block;
+       
+    }
+    .cine{
+       margin-bottom: 100px;
+    }
+    .Bathome12{
+        width: 249px;
+        height: 127px;
+        margin-left: -30px;
+        margin-top: -90px;
+      
+    }
+    .Bathome13{
+        width: 191px;
+        height: 159px;
+       
+    }
+    #batman-justice{
+        width: 100%; 
+    }
+    #batman-justice .container{
+       
+        width: 250px;
+        padding-top: 10px;
+ 
+    }
+    #batman-justice .description{
+       
+        width: 100%;
+       
+    }
+
+    /* multimediat */
+    #multimedia .container{
+       width: 100%;
+        
+    }
+    .bloc-multimedia{
+        padding-top: 10px;
+        /* margin-bottom:500px ; */
+
+    }
+    /* .slider-multimedia{   
+    } */
+    #multimedia .slider-content{
+        width: 250px;
+        height: 250px;
+        /* overflow: hidden; */
+        overflow: auto;
+    }
+    #multimedia  .left{
+      display: flex;
+        margin-bottom: -150px ;
+    }
+    #multimedia  .right{
+       margin-top: 100px;
+    }
+} 

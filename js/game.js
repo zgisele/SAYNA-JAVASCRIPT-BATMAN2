@@ -1,55 +1,11 @@
 
-$(document).ready(function () {
-   
-       console.log('jquery');
-    
-})
-
-
-
-// $(document).ready(function(){
-//     //Masquer les diapositives de questions au départ
-//     $('.question-slide').hide();
-
-//     // Récupère le nombre total de questions
-//     var totalQuestions = $('.question-slide').length;
-    
-//     // Ajoute les numéros de question à chaque diapositive
-//     $('.question-slide').each(function(index){
-//         var questionNumber = index + 1;
-//         $(this).find('.question-number').text(questionNumber + '/' + totalQuestions);
-//     });
-    
-//     // Clic sur le bouton "Démarrer"
-//     $('.start-button').click(function(){
-//         // Hide the chevalier section
-//         $('.intro-quiz').hide();
-        
-//         // Afficher la première diapositive de question
-//         $('.question-slide').first().show();
-//     });
-    
-//     // Clic sur le bouton "Suivant"
-//     $('.next-button').click(function(){
-//         // Récupérer la diapositive actuelle
-//         var currentSlide = $(this).closest('.question-slide');
-        
-//         // Masquer la diapositive actuelle
-//         currentSlide.hide();
-        
-//         //Afficher la diapositive suivante
-//         currentSlide.next('.question-slide').show();
-//     });
-// });
-
-
-
 // #################################################
 // cliquer sur le boutton demarrer le quize 
-$('#btn-start').click(function(){
-    $('#quiz-box').slideDown(1000);
-    $('#intro-quiz').slideUp(2000);  
-});
+// $('#btn-start').click(function(){
+//     $('#quiz-box').slideDown(1000);
+//     $('#intro-quiz').slideUp(2000);  
+// });
+// fin bouton demarrage
 // $(document).ready(function(){
 //     $('#btn-start').click(function(){
 //         $('#batman-game').addClass('hidden');
@@ -74,12 +30,99 @@ $('#down-arrow').click(function(){
 // fin effet scroll
 // ########################################################
 
+
+// #############################################################################
+// ######## Animation des slides de la page game ###############################
+$(document).ready(function(){
+    //Masquer les diapositives de questions au départ
+    $('.question-slide').hide();
+
+    // Récupère le nombre total de questions
+    var totalQuestions = $('.question-slide').length;
+    
+     // Ajoute les numéros de question à chaque diapositive
+    $('.question-slide').each(function(index){
+        var questionNumber = index + 1;
+        $(this).find('.question-number').text(questionNumber + '/' + totalQuestions);
+     });
+    
+     // Clic sur le bouton "Démarrer"
+     $('.start-button').click(function(){
+         // Hide the chevalier section
+         $('.intro-quiz').slideUp(2000);  
+        //  $('.intro-quiz').hide();
+      
+         // Afficher la première diapositive de question
+         $('.question-slide').first().show();
+     });
+  
+     // Clic sur le bouton "Suivant"
+     $('.next-button').click(function(){
+         // Récupérer la diapositive actuelle
+         var currentSlide = $(this).closest('.question-slide');
+      
+         // Masquer la diapositive actuelle
+         currentSlide.hide();
+      
+         //Afficher la diapositive suivante
+         currentSlide.next('.question-slide').show();
+     });
+});
+
+//####################################################################################"
+    //##fonction de changement de quetion                                             ####
+    function  setForm (question, reponse, nbreQuiz) {
+        // ./resources/assets/game/Batgame_ 
+        $('#img-illustrate').attr("src", "Illustrations2/Batgame_" + (2 + nbreQuiz) + ".png");
+        $('#number-quiz').text(nbreQuiz);
+        $('#quiz-question').empty();
+        $('#quiz-question').append("<p class ='question' id = 'question' ></p>");
+        $('#quetion').text(question);
+        for (let i = 0; i < reponse.length; i++) {
+            $('#quiz-question').append("<label for = 'checkbox" + i + "'class ='response' id='"+ i +"'></label");//a completer
+            $('#' + i).append("<input type = 'checkbox' name='choix' id='checkbox" + i +"'>");
+            $('#' + i).append("<p id = 'response" + i + "'>" + reponse[i].text + "</p>" );
+            
+        }
+        $('#quiz-question').append("<span id='error-message'></span>");
+
+
+    }
+//######################################################################
+//## Fonction de verification si user choisi une reponse             ###
+//######################################################################
+function isChooseResponse ( questions,currentQuiz) {
+    //variable local
+    let notChoose = true;
+    let userResponse = false;
+    // contole si l'utilisateur a choisir une reponse
+    for (let i = 0; i < questions[currentQuiz].reponse.length; i++) {
+        if ($('#checkbox' + i).is(":checked")) {
+            notChoose = false;
+            userResponse = questions[currentQuiz].reponse[i].isGood;
+            console.log(questions[currentQuiz].reponse[i].isGood);
+        }
+        
+    }
+    if (notChoose) {// si aucun reponse n;est chosie afficher un message d'erreur
+        $('#error-message').css("colore", "red").text("Choisissez une reponse !");
+        return [false, userResponse];
+
+    }else{
+        return [true, userResponse];
+    }
+    
+} 
+
 $.ajax({
-    url: 'https://octopus-app-2u6og.ondigitalocean.app/questions/all',
-   
+    url: 'https://opentdb.com/api.php?amount=15&category=11&difficulty=easy&type=multiple',
+    // url: 'https://superheroapi.com/api/access-token/character-id/biography',
+    // 'https://octopus-app-2u6og.ondigitalocean.app/questions/all',
+
     datatype: 'json',
+   
     success: function (questions) {
-        console.log('questions');
+        console.log(question);
         // declaration des variables locale
         let totalPoint = 0;
          let currentQuiz = 0;   //index de la questions
@@ -88,7 +131,7 @@ $.ajax({
        
         // Affiche le nombre total de quiz
         $('#total-quiz').text(totalQuiz);
-
+        
         // Initialise le formulaire avec la première question
         // setForm(questions[currentQuiz].question, questions[currentQuiz].question); // a completer
         setForm(questions[currentQuiz].question, questions[currentQuiz].reponse, currentQuiz + 1);
@@ -157,52 +200,7 @@ $.ajax({
 
 
 });
-//######################################################################
-//## Fonction de verification si user choisi une reponse             ###
-//######################################################################
-function isChooseResponse ( questions,currentQuiz) {
-    //variable local
-    let notChoose = true;
-    let userResponse = false;
-    // contole si l'utilisateur a choisir une reponse
-    for (let i = 0; i < questions[currentQuiz].reponse.length; i++) {
-        if ($('#checkbox' + i).is(":checked")) {
-            notChoose = false;
-            userResponse = questions[currentQuiz].reponse[i].isGood;
-            console.log(questions[currentQuiz].reponse[i].isGood);
-        }
-        
-    }
-    if (notChoose) {// si aucun reponse n;est chosie afficher un message d'erreur
-        $('#error-message').css("colore", "red").text("Choisissez une reponse !");
-        return [false, userResponse];
 
-    }else{
-        return [true, userResponse];
-    }
-
-    //####################################################################################"
-    //##fonction de changement de quetion                                             ####
-    function  setForm (question, reponse, nbreQuiz) {
-        // ./resources/assets/game/Batgame_ 
-        $('#img-illustrate').attr("src", "Illustrations2/Batgame_" + (2 + nbreQuiz) + ".png");
-        $('#number-quiz').text(nbreQuiz);
-        $('#quiz-question').empty();
-        $('#quiz-question').append("<p class ='question' id = 'question' ></p>");
-        $('#quetion').text(question);
-        for (let i = 0; i < reponse.length; i++) {
-            $('#quiz-question').append("<label for = 'checkbox" + i + "'class ='response' id='"+ i +"'></label");//a completer
-            $('#' + i).append("<input type = 'checkbox' name='choix' id='checkbox" + i +"'>");
-            $('#' + i).append("<p id = 'response" + i + "'>" + reponse[i].text + "</p>" );
-            
-        }
-        $('#quiz-question').append("<span id='error-message'></span>");
-
-
-    } 
-
-    
-}
 
 
 
@@ -225,16 +223,16 @@ document.body.addEventListener('mousemove', function(event) {
 
 // Apparition progressive des éléments au fur et à mesure du scrolling, avec un effet fade
 // in + slide de gauche à droite.
-$(window).on('scroll', function() {
-    $('.fade-slide').each(function() {
+// $(window).on('scroll', function() {
+//     $('.fade-slide').each(function() {
 
-        var elementTop = $(this).offset().top;
-        var viewportBottom = $(window).scrollTop() + $(window).height();
+//         var elementTop = $(this).offset().top;
+//         var viewportBottom = $(window).scrollTop() + $(window).height();
         
-        if (elementTop < viewportBottom - 60) { // Ajustez la valeur pour déclencher l'effet plus tôt ou plus tard
-            $(this).addClass('visible');
-        }
-    });
-});
+//         if (elementTop < viewportBottom - 60) { // Ajustez la valeur pour déclencher l'effet plus tôt ou plus tard
+//             $(this).addClass('visible');
+//         }
+//     });
+// });
 
 
